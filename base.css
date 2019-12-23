@@ -1,3 +1,107 @@
+body {
+    background: rgb(73, 73, 73);
+}
+
+#titre {
+    width: 100%;
+    text-align: center;
+    background: #3a11a3;
+    color: white;
+    padding: 10px;
+    font-family: "Tw Cen MT Condensed Extra Bold", serif;
+    font-weight: bold;
+}
+
+#accueil {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    margin-top: 100px;
+}
+
+#accueil label {
+    min-height: 80px;
+    border: 2px solid #b1a3f8;
+    border-radius: 100px;
+    background: #2A0E5B;
+    color: white;
+    font-size: 22px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+#choix_difficulté {
+    width: 170px;
+    height: 50px;
+    border: 2px solid #b1a3f8;
+    border-radius: 500px;
+    background: #2A0E5B;
+    margin-top: 20px;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    outline-style: none;
+    cursor: pointer;
+}
+
+#choix_difficulté option {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#jouer, #rejouer {
+    width: 130px;
+    height: 50px;
+    border: 2px solid #b1a3f8;
+    border-radius: 500px;
+    background: rgba(70, 17, 175, 0.91);
+    margin-top: 50px;
+    color: white;
+    font-size: 20px;
+    font-family: "Arial Black", serif;
+    letter-spacing: 5px;
+    outline-style: none;
+}
+
+.info {
+    height: 50px;
+    border: 2px solid #b1a3f8;
+    border-radius: 50px;
+    background: #2A0E5B;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.info span {
+    color: green;
+    margin-left: 10px;
+}
+
+.question_total {
+    color: white !important;
+    margin-left: 0 !important;
+}
+
+.coup_restant {
+    font-size: 22px;
+    margin-left: 20px;
+}
+
+#jeux {
+    margin-top: 70px;
+    display: none;
+}
+
 #question {
     min-height: 100px;
     border: 2px solid #b1a3f8;
@@ -23,8 +127,6 @@
     display: flex;
     cursor: pointer;
 }
-
-
 
 .reponse span:not(.choix_reponse) {
     display: flex;
@@ -52,4 +154,74 @@
 }
 .reponse:hover span {
     color: black;
+}
+
+.fin {
+    display: none;
+    flex-direction: column;
+    margin-top: 60px;
+    place-items: center;
+}
+
+.phrase_resultat {
+    min-height: 80px;
+    max-width: 700px;
+    border: 2px solid #b1a3f8;
+    border-radius: 100px;
+    background: #2A0E5B;
+    color: white;
+    font-size: 26px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.resultat {
+    border: 2px solid #b1a3f8;
+    border-radius: 100px;
+    background: #2A0E5B;
+    color: white;
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    margin: 20px;
+}
+
+.resultat div {
+    display: flex;
+    justify-content: center;
+}
+
+.resultat div span {
+    margin-left: 30px;
+    color: green;
+}
+
+.resultat .question_total {
+    color: white;
+    margin: 0;
+}
+
+.R1 {
+    font-size: 26px;
+    text-decoration: underline;
+    color: lightskyblue;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center !important;
+}
+
+.R2 {
+    display: flex;
+    width: 150px !important;
+}
+
+#rejouer {
+    width: 145px;
+    text-align: center;
 }

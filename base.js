@@ -150,9 +150,26 @@ const questObj = [
         "reponse": ["AMÉRIQUE DU SUD", "AMÉRIQUE DU NORD", "EUROPE", "AFRIQUE"],
     },
 ];
+const reponseCase = $('.reponse');
+let bonneReponse = 0;
+let mauvaiseReponse = 0;
+let questionRepondu = 1;
+let coupRestant;
+let questionTotal = questObj.length;
+const question_repondu = $('.question_repondu');
+
+function end() {
+    $('#jeux').css('display', 'none');
+    $('.fin').css('display', 'flex');
+    question_repondu.text(questionRepondu - 1);
+    $('.mauvaise_reponse').text(mauvaiseReponse);
+    $('.bonne_reponse').text(bonneReponse);
+}
 
 function question_aleatoire() {
-    $('.reponse').css('background', '#2A0E5B').hover(function () {
+    $('.coup_restant').text(coupRestant);
+    question_repondu.text(questionRepondu);
+    reponseCase.css('background', '#2A0E5B').hover(function () {
         $(this).css('background', '#fba900').find('span').css('color', 'black')
     }, function () {
         $(this).css('background', '#2A0E5B').find('span').css('color', '#00bf00');
@@ -176,44 +193,74 @@ function question_aleatoire() {
         $('.choix_reponse').each(function (index) {
             $(this).text(reponse[index])
         });
-        $('.reponse').click(function f() {
-            $('.reponse').unbind('click').hover(function () {
+
+        $('.reponse').click(function () {
+            reponseCase.unbind('click').hover(function () {
                 $(this).css('background', '#2A0E5B');
                 $(this).find('span').css('color', '#00bf00');
                 $(this).find('.choix_reponse').css('color', 'white');
             });
             if ($(this).find('.choix_reponse').text() === value.bonne_reponse) {
                 $(this).css('background', 'green');
-
                 $(this).hover(function () {
                     $(this).css('background', 'green');
-                });
-
-                $(this).find('span').css('color', 'black');
-
-                $(this).hover(function () {
                     $(this).find('span').css('color', 'black')
                 });
-
-                setTimeout(question_aleatoire, 2000);
-                questObj.splice(chiffre_ale, 1);
-
+                bonneReponse++;
             } else {
                 $(this).css('background', 'red').hover(function () {
                     $(this).css('background', 'red')
                 });
-
                 $(this).find('span').css('color', 'black');
                 $(this).hover(function () {
                     $(this).find('span').css('color', 'black')
                 });
-
-                setTimeout(question_aleatoire, 2000);
-                questObj.splice(chiffre_ale, 1);
+                coupRestant--;
+                mauvaiseReponse++;
             }
+            $('.reponse').each(function () {
+                if ($(this).find('.choix_reponse').text() === value.bonne_reponse) {
+                    $(this).css('background', 'green');
+                    $(this).find('span').css('color', 'black');
+                    $(this).hover(function () {
+                        $(this).css('background', 'green');
+                        $(this).find('span').css('color', 'black')
+                    });
+                }
+            });
+            questionRepondu++;
+            questObj.splice(chiffre_ale, 1);
+            setTimeout(question_aleatoire, 2000);
         });
     });
+
+    if (coupRestant < 1) {
+        end();
+        $('.phrase_resultat').text('Dommage, Vous avez répondu avez perdu');
+    }
+    if (questionRepondu > 30) {
+        end();
+        $('.phrase_resultat').text('Félicitation, vous avez gagnez');
+    }
 }
 
-question_aleatoire();
+$('#jouer').click(function () {
+    $('#accueil').css('display', 'none');
+    $('#jeux').css('display', 'block');
+    const selection = $("select[name='Difficulté'] > option:selected");
+    if (selection.val() === 'facile') {
+        coupRestant = 10;
+    }
+    if (selection.val() === 'normale') {
+        coupRestant = 8;
+    }
+    if (selection.val() === 'difficile') {
+        coupRestant = 5
+    }
+    $('.question_total').text(questionTotal);
+    question_aleatoire();
+});
 
+$('#rejouer').click(function () {
+    window.location.reload()
+});

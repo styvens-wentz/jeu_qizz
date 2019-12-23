@@ -7,10 +7,32 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="base.css">
-    <title>Qizz</title>
+    <title>Qui veut gagner que dalle</title>
 </head>
 <body>
+<h1 id="titre">QUI VEUT GAGNER QUE DALLE ?</h1>
+
+<div class="container" id="accueil">
+    <div class="row">
+        <label class="col-lg-12" for="choix_difficulté">Choisissez votre niveau de difficulté:</label>
+    </div>
+    <div class="row">
+        <select class="col-lg-12" name="Difficulté" id="choix_difficulté">
+            <option value="facile">Facile</option>
+            <option value="normale" selected>Normale</option>
+            <option value="difficile">Difficile</option>
+        </select>
+    </div>
+    <div class="row">
+        <input type="button" value="Jouer" id="jouer">
+    </div>
+</div>
+
 <div class="container" id="jeux">
+    <div class="row">
+        <div class="col-md-4 info">Chances:<span class="coup_restant"></span></div>
+        <div class="offset-md-4 col-md-4 info">Questions:<span class="question_repondu"></span>/<span class="question_total"></span></div>
+    </div>
     <div class="row">
         <div class="col-lg-12" id="question"></div>
     </div>
@@ -21,6 +43,21 @@
     <div class="row">
         <div class="col-md-5 reponse"><span>C:</span> <span class="choix_reponse"></span></div>
         <div class="offset-md-2 col-md-5 reponse"><span>D:</span> <span class="choix_reponse"></span></div>
+    </div>
+</div>
+
+<div class="container fin">
+    <div class="row">
+        <div class="col-lg-12 phrase_resultat"></div>
+    </div>
+    <div class="row resultat">
+        <div class="col-lg-12 R1">RÉSULTAT:</div>
+        <div class="col-md-12 R2">Questions Totale: <span class="question_repondu"></span>/<span class="question_total"></span></div>
+        <div class="col-md-12 R2">Mauvaises réponse: <span class="mauvaise_reponse"></span></div>
+        <div class="col-md-12 R2">Bonne réponse: <span class="bonne_reponse"></span></div>
+    </div>
+    <div class="row">
+        <input class="col-lg-12" type="button" value="Rejouer" id="rejouer">
     </div>
 </div>
 
